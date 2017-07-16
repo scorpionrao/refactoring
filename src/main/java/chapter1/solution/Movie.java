@@ -1,4 +1,4 @@
-package chapter1.setup;
+package chapter1.solution;
 
 public class Movie {
     public static final int CHILDRENS = 2;
@@ -28,5 +28,4 @@ public class Movie {
     public void setPriceCode(int priceCode) {
         this._priceCode = priceCode;
     }
-
 }

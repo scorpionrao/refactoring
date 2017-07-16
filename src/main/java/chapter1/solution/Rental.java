@@ -1,4 +1,4 @@
-package chapter1.setup;
+package chapter1.solution;
 
 public class Rental {
 
@@ -17,7 +17,4 @@ public class Rental {
     public int getDaysRented() {
         return daysRented;
     }
-
-
-
 }

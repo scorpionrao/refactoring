@@ -1,4 +1,4 @@
-package chapter1.setup;
+package chapter1.solution;
 
 import java.util.Enumeration;
 import java.util.Vector;
@@ -57,7 +57,7 @@ public class Customer {
 
             // show figures for this rental
             result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
-            thisAmount += thisAmount;
+            totalAmount += thisAmount;
         }
 
         // add footer lines
