@@ -33,6 +33,8 @@ public class CustomerTest {
         Customer customer = getCustomerForOneRental(MOVIE_NEW_RELEASE1, ONE_DAY);
         String expectedMessage = getExpectedMessage(MOVIE_NEW_RELEASE1, 3.0, ONE_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_NEW_RELEASE1, 3.0, ONE_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -41,6 +43,8 @@ public class CustomerTest {
         Customer customer = getCustomerForOneRental(MOVIE_NEW_RELEASE1, TWO_DAY);
         String expectedMessage = getExpectedMessage(MOVIE_NEW_RELEASE1, 6.0, TWO_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_NEW_RELEASE1, 6.0, TWO_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -49,6 +53,8 @@ public class CustomerTest {
         Customer customer = getCustomerForOneRental(MOVIE_REGULAR1, ONE_DAY);
         String expectedMessage = getExpectedMessage(MOVIE_REGULAR1, 2.0, ONE_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_REGULAR1, 2.0, ONE_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -57,6 +63,8 @@ public class CustomerTest {
         Customer customer = getCustomerForOneRental(MOVIE_REGULAR1, TWO_DAY);
         String expectedMessage = getExpectedMessage(MOVIE_REGULAR1, 2.0, ONE_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_REGULAR1, 2.0, ONE_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -65,6 +73,8 @@ public class CustomerTest {
         Customer customer = getCustomerForOneRental(MOVIE_REGULAR1, THREE_DAY);
         String expectedMessage = getExpectedMessage(MOVIE_REGULAR1, 3.5, ONE_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_REGULAR1, 3.5, ONE_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -73,6 +83,8 @@ public class CustomerTest {
         Customer customer = getCustomerForOneRental(MOVIE_CHILDRENS1, ONE_DAY);
         String expectedMessage = getExpectedMessage(MOVIE_CHILDRENS1, 1.5, ONE_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_CHILDRENS1, 1.5, ONE_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -81,6 +93,8 @@ public class CustomerTest {
         Customer customer = getCustomerForOneRental(MOVIE_CHILDRENS1, TWO_DAY);
         String expectedMessage = getExpectedMessage(MOVIE_CHILDRENS1, 1.5, ONE_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_CHILDRENS1, 1.5, ONE_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -89,6 +103,8 @@ public class CustomerTest {
         Customer customer = getCustomerForOneRental(MOVIE_CHILDRENS1, THREE_DAY);
         String expectedMessage = getExpectedMessage(MOVIE_CHILDRENS1, 1.5, ONE_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_CHILDRENS1, 1.5, ONE_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -97,6 +113,8 @@ public class CustomerTest {
         Customer customer = getCustomerForOneRental(MOVIE_CHILDRENS1, FOUR_DAY);
         String expectedMessage = getExpectedMessage(MOVIE_CHILDRENS1, 3.0, ONE_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_CHILDRENS1, 3.0, ONE_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -113,6 +131,8 @@ public class CustomerTest {
         };
         String expectedMessage = getExpectedMessage(movieAndAmounts, 5.0, TWO_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(movieAndAmounts, 5.0, TWO_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -129,6 +149,8 @@ public class CustomerTest {
         };
         String expectedMessage = getExpectedMessage(movieAndAmounts, 9.5, THREE_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(movieAndAmounts, 9.5, THREE_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -145,6 +167,8 @@ public class CustomerTest {
         };
         String expectedMessage = getExpectedMessage(movieAndAmounts, 4.5, TWO_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(movieAndAmounts, 4.5, TWO_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -161,6 +185,8 @@ public class CustomerTest {
         };
         String expectedMessage = getExpectedMessage(movieAndAmounts, 11.0, THREE_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(movieAndAmounts, 11.0, THREE_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -177,6 +203,8 @@ public class CustomerTest {
         };
         String expectedMessage = getExpectedMessage(movieAndAmounts, 3.5, TWO_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(movieAndAmounts, 3.5, TWO_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -193,6 +221,8 @@ public class CustomerTest {
         };
         String expectedMessage = getExpectedMessage(movieAndAmounts, 6.5, TWO_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(movieAndAmounts, 6.5, TWO_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -211,6 +241,8 @@ public class CustomerTest {
         };
         String expectedMessage = getExpectedMessage(movieAndAmounts, 6.5, THREE_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(movieAndAmounts, 6.5, THREE_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -229,6 +261,8 @@ public class CustomerTest {
         };
         String expectedMessage = getExpectedMessage(movieAndAmounts, 12.5, FOUR_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(movieAndAmounts, 12.5, FOUR_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -245,6 +279,8 @@ public class CustomerTest {
         };
         String expectedMessage = getExpectedMessage(movieAndAmounts, 9.0, THREE_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(movieAndAmounts, 9.0, THREE_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -261,6 +297,8 @@ public class CustomerTest {
         };
         String expectedMessage = getExpectedMessage(movieAndAmounts, 5.5, TWO_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(movieAndAmounts, 5.5, TWO_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     @Test
@@ -277,6 +315,8 @@ public class CustomerTest {
         };
         String expectedMessage = getExpectedMessage(movieAndAmounts, 4.5, TWO_POINTS);
         Assert.assertEquals(expectedMessage, customer.statement());
+        String expectedHtmlMessage = getExpectedHtmlMessage(movieAndAmounts, 4.5, TWO_POINTS);
+        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
     private Customer getCustomerForOneRental(Movie movie, int daysRented) {
@@ -300,6 +340,13 @@ public class CustomerTest {
                 "You earned " + frequentRenterPoints + " frequent renter points";
     }
 
+    private String getExpectedHtmlMessage(Movie movie, double amount, int frequentRenterPoints) {
+        return "<h1>Rental Record for <em>" + CUSTOMER_NAME + "</em></h1>\n" +
+                "\t" + movie.getTitle() + "\t" + amount + "<br>\n" +
+                "<p>You owe <em>" + amount + "</em></p>\n" +
+                "<p>You earned <em>" + frequentRenterPoints + "</em> frequent renter points</p>";
+    }
+
     private String getExpectedMessage(MovieAndAmount[] movieAndAmounts, double amount, int frequentRenterPoints) {
         String result = "Rental Record for " + CUSTOMER_NAME + "\n";
         for(MovieAndAmount movieAndAmount : movieAndAmounts) {
@@ -307,6 +354,16 @@ public class CustomerTest {
         }
         result += "Amount owed is " + amount + "\n";
         result += "You earned " + frequentRenterPoints + " frequent renter points";
+        return result;
+    }
+
+    private String getExpectedHtmlMessage(MovieAndAmount[] movieAndAmounts, double amount, int frequentRenterPoints) {
+        String result = "<h1>Rental Record for <em>" + CUSTOMER_NAME + "</em></h1>\n";
+        for(MovieAndAmount movieAndAmount : movieAndAmounts) {
+            result += "\t" + movieAndAmount.getMovie().getTitle() + "\t" + movieAndAmount.getAmount() + "<br>\n";
+        }
+        result += "<p>You owe <em>" + amount + "</em></p>\n";
+        result += "<p>You earned <em>" + frequentRenterPoints + "</em> frequent renter points</p>";
         return result;
     }
 

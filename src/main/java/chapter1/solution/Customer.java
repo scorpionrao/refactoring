@@ -3,66 +3,77 @@ package chapter1.solution;
 import java.util.Enumeration;
 import java.util.Vector;
 
-public class Customer {
+class Customer {
 
     private String name;
-    private Vector rentals = new Vector();
+    private Vector<Rental> rentals = new Vector<Rental>();
 
-    public Customer(String name, Vector rentals) {
+    Customer(String name, Vector<Rental> rentals) {
         this.name = name;
         this.rentals = rentals;
     }
-
-    public void addRental(Rental arg) {
+/*
+    void addRental(Rental arg) {
         rentals.add(arg);
     }
-
-    public String getName() {
+*/
+    private String getName() {
         return this.name;
     }
 
-    public String statement() {
-        double totalAmount = 0;
-        int frequentRenterPoints = 0;
+    String statement() {
+
         Enumeration rentals = this.rentals.elements();
         String result = "Rental Record for " + getName() + "\n";
         while(rentals.hasMoreElements()) {
-            double thisAmount = 0;
             Rental each = (Rental) rentals.nextElement();
 
-            // determine amounts for each line
-            switch (each.getMovie().getPriceCode()) {
-                case Movie.REGULAR:
-                    thisAmount += 2;
-                    if(each.getDaysRented() > 2) {
-                        thisAmount += (each.getDaysRented() - 2) * 1.5;
-                    }
-                    break;
-                case Movie.NEW_RELEASE:
-                    thisAmount += each.getDaysRented() * 3;
-                    break;
-                case Movie.CHILDRENS:
-                    thisAmount += 1.5;
-                    if(each.getDaysRented() > 3) {
-                        thisAmount += (each.getDaysRented() - 3) * 1.5;
-                    }
-            }
-
-            // add frequent renter points
-            frequentRenterPoints++;
-            // add bonus for a two day new release rental
-            if((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && each.getDaysRented() > 1) {
-                frequentRenterPoints++;
-            }
-
             // show figures for this rental
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
-            totalAmount += thisAmount;
+            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getCharge()) + "\n";
         }
 
         // add footer lines
-        result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
+        result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
+        result += "You earned " + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points";
         return result;
     }
+
+    String htmlStatement() {
+
+        Enumeration rentals = this.rentals.elements();
+        String result = "<h1>Rental Record for <em>" + getName() + "</em></h1>\n";
+        while(rentals.hasMoreElements()) {
+            Rental each = (Rental) rentals.nextElement();
+
+            // show figures for this rental
+            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getCharge()) + "<br>\n";
+        }
+
+        // add footer lines
+        result += "<p>You owe <em>" + String.valueOf(getTotalCharge()) + "</em></p>\n";
+        result += "<p>You earned <em>" + String.valueOf(getTotalFrequentRenterPoints()) +
+                "</em> frequent renter points</p>";
+        return result;
+    }
+
+    private double getTotalCharge() {
+        double result = 0;
+        Enumeration rentals = this.rentals.elements();
+        while(rentals.hasMoreElements()) {
+            Rental each = (Rental) rentals.nextElement();
+            result += each.getCharge();
+        }
+        return result;
+    }
+
+    private int getTotalFrequentRenterPoints() {
+        int result = 0;
+        Enumeration rentals = this.rentals.elements();
+        while(rentals.hasMoreElements()) {
+            Rental each = (Rental) rentals.nextElement();
+            result += each.getFrequentRenterPoints();
+        }
+        return result;
+    }
+
 }
