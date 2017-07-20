@@ -1,4 +1,4 @@
-package chapter5.extractmethod;
+package chapter6.extractmethod;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,7 +18,7 @@ public class CustomerTest {
     public void testNoOrder() {
 
         Customer customer = new Customer("test", new Vector<Order>());
-        Assert.assertThat(0.0, equalTo(customer.printOwing()));
+        Assert.assertThat(0.0, equalTo(customer.printOwing(0)));
     }
 
     @Test
@@ -27,7 +27,7 @@ public class CustomerTest {
         Order[] orders = {order};
         Vector<Order> ordersVector = new Vector<Order>(Arrays.asList(orders));
         Customer customer = new Customer("test", ordersVector);
-        Assert.assertThat(0.0, equalTo(customer.printOwing()));
+        Assert.assertThat(0.0, equalTo(customer.printOwing(0)));
     }
 
     @Test
@@ -36,7 +36,7 @@ public class CustomerTest {
         Order[] orders = {order};
         Vector<Order> ordersVector = new Vector<Order>(Arrays.asList(orders));
         Customer customer = new Customer("test", ordersVector);
-        Assert.assertThat(5.0, equalTo(customer.printOwing()));
+        Assert.assertThat(5.0, equalTo(customer.printOwing(0)));
     }
 
     @Test
@@ -46,6 +46,6 @@ public class CustomerTest {
         Order[] orders = {order1, order2};
         Vector<Order> ordersVector = new Vector<Order>(Arrays.asList(orders));
         Customer customer = new Customer("test", ordersVector);
-        Assert.assertThat(10.0, equalTo(customer.printOwing()));
+        Assert.assertThat(10.0, equalTo(customer.printOwing(0)));
     }
 }

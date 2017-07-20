@@ -1,4 +1,4 @@
-package chapter5.extractmethod;
+package chapter6.extractmethod;
 
 import java.util.Enumeration;
 import java.util.Vector;
@@ -12,19 +12,16 @@ public class Customer {
         this.orders = orders;
     }
 
-    double printOwing() {
-        Enumeration e = orders.elements();
-
+    double printOwing(double previousAmount) {
         printBanner();
-
-        double outstanding = getOutstanding(e);
-
+        double outstanding = getOutstanding(previousAmount * 1.2);
         printDetails(outstanding);
         return outstanding;
     }
 
-    private double getOutstanding(Enumeration e) {
-        double result = 0.0;
+    private double getOutstanding(double initialValue) {
+        Enumeration e = this.orders.elements();
+        double result = initialValue;
         while(e.hasMoreElements()) {
             Order each = (Order) e.nextElement();
             result += each.getAmount();
