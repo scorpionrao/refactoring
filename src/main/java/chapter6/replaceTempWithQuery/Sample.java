@@ -21,7 +21,7 @@ public class Sample {
         }
     }
 
-    private double basePrice() {
+    public double basePrice() {
         return quantity * itemPrice;
     }
 }

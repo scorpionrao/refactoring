@@ -27,7 +27,7 @@ public class SampleTest {
     @Test
     public void testZeroBasePrice() {
         Sample sample = new Sample(5, 0.0);
-        double basePrice = sample.getBasePrice();
+        double basePrice = sample.basePrice();
         Assert.assertThat(0.0, equalTo(basePrice));
     }
 
