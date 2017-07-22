@@ -29,92 +29,48 @@ public class CustomerTest {
 
     @Test
     public void testNewReleaseOneDay() {
-
-        Customer customer = getCustomerForOneRental(MOVIE_NEW_RELEASE1, ONE_DAY);
-        String expectedMessage = getExpectedMessage(MOVIE_NEW_RELEASE1, 3.0, ONE_POINTS);
-        Assert.assertEquals(expectedMessage, customer.statement());
-        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_NEW_RELEASE1, 3.0, ONE_POINTS);
-        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
+        RentalResourceModel model = new RentalResourceModel(MOVIE_NEW_RELEASE1, ONE_DAY, ONE_POINTS, 3.0);
+        assertStatements(model);
     }
 
     @Test
     public void testNewReleaseMoreThanOneDay() {
-
-        Customer customer = getCustomerForOneRental(MOVIE_NEW_RELEASE1, TWO_DAY);
-        String expectedMessage = getExpectedMessage(MOVIE_NEW_RELEASE1, 6.0, TWO_POINTS);
-        Assert.assertEquals(expectedMessage, customer.statement());
-        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_NEW_RELEASE1, 6.0, TWO_POINTS);
-        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
+        assertStatements(new RentalResourceModel(MOVIE_NEW_RELEASE1, TWO_DAY, TWO_POINTS, 6.0));
     }
 
     @Test
     public void testRegularOneDay() {
-
-        Customer customer = getCustomerForOneRental(MOVIE_REGULAR1, ONE_DAY);
-        String expectedMessage = getExpectedMessage(MOVIE_REGULAR1, 2.0, ONE_POINTS);
-        Assert.assertEquals(expectedMessage, customer.statement());
-        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_REGULAR1, 2.0, ONE_POINTS);
-        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
+        assertStatements(new RentalResourceModel(MOVIE_REGULAR1, ONE_DAY, ONE_POINTS, 2.0));
     }
 
     @Test
     public void testRegularTwoDays() {
-
-        Customer customer = getCustomerForOneRental(MOVIE_REGULAR1, TWO_DAY);
-        String expectedMessage = getExpectedMessage(MOVIE_REGULAR1, 2.0, ONE_POINTS);
-        Assert.assertEquals(expectedMessage, customer.statement());
-        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_REGULAR1, 2.0, ONE_POINTS);
-        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
+        assertStatements(new RentalResourceModel(MOVIE_REGULAR1, TWO_DAY, ONE_POINTS, 2.0));
     }
 
     @Test
     public void testRegularMoreThanTwoDays() {
-
-        Customer customer = getCustomerForOneRental(MOVIE_REGULAR1, THREE_DAY);
-        String expectedMessage = getExpectedMessage(MOVIE_REGULAR1, 3.5, ONE_POINTS);
-        Assert.assertEquals(expectedMessage, customer.statement());
-        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_REGULAR1, 3.5, ONE_POINTS);
-        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
+        assertStatements(new RentalResourceModel(MOVIE_REGULAR1, THREE_DAY, ONE_POINTS, 3.5));
     }
 
     @Test
     public void testChildrenOneDay() {
-
-        Customer customer = getCustomerForOneRental(MOVIE_CHILDRENS1, ONE_DAY);
-        String expectedMessage = getExpectedMessage(MOVIE_CHILDRENS1, 1.5, ONE_POINTS);
-        Assert.assertEquals(expectedMessage, customer.statement());
-        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_CHILDRENS1, 1.5, ONE_POINTS);
-        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
+        assertStatements(new RentalResourceModel(MOVIE_CHILDRENS1, ONE_DAY, ONE_POINTS, 1.5));
     }
 
     @Test
     public void testChildrenTwoDays() {
-
-        Customer customer = getCustomerForOneRental(MOVIE_CHILDRENS1, TWO_DAY);
-        String expectedMessage = getExpectedMessage(MOVIE_CHILDRENS1, 1.5, ONE_POINTS);
-        Assert.assertEquals(expectedMessage, customer.statement());
-        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_CHILDRENS1, 1.5, ONE_POINTS);
-        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
+        assertStatements(new RentalResourceModel(MOVIE_CHILDRENS1, TWO_DAY, ONE_POINTS, 1.5));
     }
 
     @Test
     public void testChildrenThreeDays() {
-
-        Customer customer = getCustomerForOneRental(MOVIE_CHILDRENS1, THREE_DAY);
-        String expectedMessage = getExpectedMessage(MOVIE_CHILDRENS1, 1.5, ONE_POINTS);
-        Assert.assertEquals(expectedMessage, customer.statement());
-        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_CHILDRENS1, 1.5, ONE_POINTS);
-        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
+        assertStatements(new RentalResourceModel(MOVIE_CHILDRENS1, THREE_DAY, ONE_POINTS, 1.5));
     }
 
     @Test
     public void testChildrenMoreThanThreeDays() {
-
-        Customer customer = getCustomerForOneRental(MOVIE_CHILDRENS1, FOUR_DAY);
-        String expectedMessage = getExpectedMessage(MOVIE_CHILDRENS1, 3.0, ONE_POINTS);
-        Assert.assertEquals(expectedMessage, customer.statement());
-        String expectedHtmlMessage = getExpectedHtmlMessage(MOVIE_CHILDRENS1, 3.0, ONE_POINTS);
-        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
+        assertStatements(new RentalResourceModel(MOVIE_CHILDRENS1, FOUR_DAY, ONE_POINTS, 3.0));
     }
 
     @Test
@@ -123,16 +79,14 @@ public class CustomerTest {
         Rental[] rentals = new Rental[2];
         rentals[0] = new Rental(MOVIE_NEW_RELEASE1, ONE_DAY);
         rentals[1] = new Rental(MOVIE_REGULAR1, ONE_DAY);
-        Customer customer =
-                getCustomerForMultipleRentals(rentals);
         MovieAndAmount[] movieAndAmounts = {
                 new MovieAndAmount(MOVIE_NEW_RELEASE1, 3.0),
                 new MovieAndAmount(MOVIE_REGULAR1, 2.0)
         };
-        String expectedMessage = getExpectedMessage(movieAndAmounts, 5.0, TWO_POINTS);
-        Assert.assertEquals(expectedMessage, customer.statement());
-        String expectedHtmlMessage = getExpectedHtmlMessage(movieAndAmounts, 5.0, TWO_POINTS);
-        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
+        Assert.assertEquals(getExpectedMessage(movieAndAmounts, 5.0, TWO_POINTS),
+                getCustomerForMultipleRentals(rentals).statement());
+        Assert.assertEquals(getExpectedHtmlMessage(movieAndAmounts, 5.0, TWO_POINTS),
+                getCustomerForMultipleRentals(rentals).htmlStatement());
     }
 
     @Test
@@ -147,10 +101,8 @@ public class CustomerTest {
                 new MovieAndAmount(MOVIE_NEW_RELEASE1, 6.0),
                 new MovieAndAmount(MOVIE_REGULAR1, 3.5)
         };
-        String expectedMessage = getExpectedMessage(movieAndAmounts, 9.5, THREE_POINTS);
-        Assert.assertEquals(expectedMessage, customer.statement());
-        String expectedHtmlMessage = getExpectedHtmlMessage(movieAndAmounts, 9.5, THREE_POINTS);
-        Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
+        Assert.assertEquals(getExpectedMessage(movieAndAmounts, 9.5, THREE_POINTS), customer.statement());
+        Assert.assertEquals(getExpectedHtmlMessage(movieAndAmounts, 9.5, THREE_POINTS), customer.htmlStatement());
     }
 
     @Test
@@ -319,8 +271,8 @@ public class CustomerTest {
         Assert.assertEquals(expectedHtmlMessage, customer.htmlStatement());
     }
 
-    private Customer getCustomerForOneRental(Movie movie, int daysRented) {
-        Rental rental = new Rental(movie, daysRented);
+    private Customer getCustomerForOneRental(RentalResourceModel model) {
+        Rental rental = new Rental(model.getMovie(), model.getDaysRented());
         Rental[] rentalArray = {rental};
         Vector<Rental> rentals = new Vector<Rental>(Arrays.asList(rentalArray));
         return new Customer(CUSTOMER_NAME, rentals);
@@ -333,18 +285,18 @@ public class CustomerTest {
 
     }
 
-    private String getExpectedMessage(Movie movie, double amount, int frequentRenterPoints) {
+    private String getExpectedMessage(RentalResourceModel model) {
         return "Rental Record for " + CUSTOMER_NAME + "\n" +
-                "\t" + movie.getTitle() + "\t" + amount + "\n" +
-                "Amount owed is " + amount + "\n" +
-                "You earned " + frequentRenterPoints + " frequent renter points";
+                "\t" + model.getMovie().getTitle() + "\t" + model.getExpectedAmount() + "\n" +
+                "Amount owed is " + model.getExpectedAmount() + "\n" +
+                "You earned " + model.getExpectedFrequentRenterPoints() + " frequent renter points";
     }
 
-    private String getExpectedHtmlMessage(Movie movie, double amount, int frequentRenterPoints) {
+    private String getExpectedHtmlMessage(RentalResourceModel model) {
         return "<h1>Rental Record for <em>" + CUSTOMER_NAME + "</em></h1>\n" +
-                "\t" + movie.getTitle() + "\t" + amount + "<br>\n" +
-                "<p>You owe <em>" + amount + "</em></p>\n" +
-                "<p>You earned <em>" + frequentRenterPoints + "</em> frequent renter points</p>";
+                "\t" + model.getMovie().getTitle() + "\t" + model.getExpectedAmount() + "<br>\n" +
+                "<p>You owe <em>" + model.getExpectedAmount() + "</em></p>\n" +
+                "<p>You earned <em>" + model.getExpectedFrequentRenterPoints() + "</em> frequent renter points</p>";
     }
 
     private String getExpectedMessage(MovieAndAmount[] movieAndAmounts, double amount, int frequentRenterPoints) {
@@ -365,6 +317,11 @@ public class CustomerTest {
         result += "<p>You owe <em>" + amount + "</em></p>\n";
         result += "<p>You earned <em>" + frequentRenterPoints + "</em> frequent renter points</p>";
         return result;
+    }
+
+    private void assertStatements(RentalResourceModel model) {
+        Assert.assertEquals(getExpectedMessage(model), getCustomerForOneRental(model).statement());
+        Assert.assertEquals(getExpectedHtmlMessage(model), getCustomerForOneRental(model).htmlStatement());
     }
 
     class MovieAndAmount {
