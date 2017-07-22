@@ -1,8 +1,5 @@
 package chapter1.solution;
 
-/**
- * Created by rgonugunta on 7/16/17.
- */
 public class RegularPrice extends Price {
     int getPriceCode() {
         return Movie.REGULAR;

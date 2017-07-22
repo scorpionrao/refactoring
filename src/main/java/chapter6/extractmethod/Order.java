@@ -1,8 +1,5 @@
 package chapter6.extractmethod;
 
-/**
- * Created by rgonugunta on 7/18/17.
- */
 public class Order {
 
     private double amount;

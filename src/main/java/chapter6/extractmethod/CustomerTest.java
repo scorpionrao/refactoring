@@ -8,9 +8,6 @@ import java.util.Vector;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 
-/**
- * Created by rgonugunta on 7/18/17.
- */
 public class CustomerTest {
 
 
